@@ -77,7 +77,7 @@ function searchProjects() {
         // Build HTML
         filtered.forEach(project => {
             const card = document.createElement("div");
-            card.className = "px-8 py-6 text-center bg-white rounded-3xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow";
+            card.className = "px-8 py-6 text-center bg-white rounded-[2rem] border border-slate-200 shadow-lg cursor-pointer transition duration-300 hover:-translate-y-1 hover:shadow-2xl";
             
             // Handle Recently Viewed Storage
             card.addEventListener("click", () => {
@@ -91,7 +91,7 @@ function searchProjects() {
             });
 
             const iconBox = document.createElement("div");
-            iconBox.className = "w-20 h-20 mx-auto mb-4 bg-green-900 rounded-2xl flex items-center justify-center";
+            iconBox.className = "w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-blue-600 to-cyan-500 rounded-3xl flex items-center justify-center shadow-md";
             const iconText = document.createElement("span");
             iconText.className = "text-2xl text-white font-bold";
             iconText.textContent = project.id;

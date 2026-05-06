@@ -1,48 +1,58 @@
-function ExperienceView(){
-    const experienceContainer= document.getElementById("experience-container");
-    if(!experienceContainer){
-        console.log("experience not found");
+function renderEducation() {
+    const educationContainer = document.getElementById("education-container");
+    if (!educationContainer) {
+        console.log("education container not found");
         return;
     }
-    experienceContainer.innerHTML = "";
-    experiencesData.forEach(function(experience){
-        const card2 = document.createElement("div");
-        card2.className = " h-30 w-210 ml-15 p-2 text-center bg-white rounded-3xl shadow-lg hover:bg-red-300";
 
-        const iconBox = document.createElement("div");
-        iconBox.className = "w-20 h-10 mx-auto mb-4 bg-green-900 rounded-2xl flex items-center justify-center";
+    educationContainer.innerHTML = "";
 
-        const iconcard1 = document.createElement("span");
-        iconcard1.className = "text-2xl text-white font-bold";
-        iconcard1.textContent = experience.label;
-        
-        iconBox.appendChild(iconcard1);
+    experiencesData.forEach((education) => {
+        const card = document.createElement("article");
+        card.className = "group overflow-hidden rounded-[2rem] bg-slate-950 p-8 text-left text-white shadow-2xl transition-transform duration-300 hover:-translate-y-1 hover:shadow-blue-500/20";
 
-        const experienceCollege = document.createElement("h3");
-        experienceCollege.className ="text-xl font-bold mb-2";
-        experienceCollege.textContent =experience.college;
+        const badge = document.createElement("span");
+        badge.className = "inline-flex items-center gap-2 rounded-full bg-blue-500/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-200 shadow-inner";
+        badge.textContent = education.label;
 
-        const experienceStudy = document.createElement("p");
-        experienceStudy.className ="text-xl font-bold mb-2";
-        experienceStudy.textContent =experience.study;
+        const title = document.createElement("h3");
+        title.className = "mt-6 text-2xl font-semibold leading-tight text-white";
+        title.textContent = education.study;
 
-         const experiencescore = document.createElement("h1");
-         experiencescore.className = "text-sm font-bold";
-         experiencescore.textContent = experience.CGPA;
+        const year = document.createElement("p");
+        year.className = "mt-3 text-sm uppercase tracking-[0.18em] text-slate-400";
+        year.textContent = education.year;
 
+        const college = document.createElement("p");
+        college.className = "mt-4 text-base text-slate-300";
+        college.textContent = education.college;
 
-        const experiencelabel = document.createElement("p");
-        experiencelabel.className = "text-sm";
-        experiencelabel.textContent = experience.label;
+        const cgpa = document.createElement("p");
+        cgpa.className = "mt-4 text-sm font-semibold text-slate-200";
+        cgpa.textContent = `Score: ${education.CGPA}`;
 
+        const description = document.createElement("p");
+        description.className = "mt-4 leading-7 text-slate-300";
+        description.textContent = education.description;
 
+        const details = document.createElement("div");
+        details.className = "mt-6 flex flex-wrap gap-3";
 
-      card2.appendChild(experienceStudy);
-       card2.appendChild(experienceCollege);
-      iconBox.appendChild(experiencelabel);
-      card2.appendChild(experiencescore);
-       experienceContainer.appendChild(card2);
+        const detailChip = document.createElement("span");
+        detailChip.className = "rounded-full bg-slate-800 px-4 py-2 text-xs text-slate-200 shadow-sm";
+        detailChip.textContent = `Advanced coursework and academic leadership`;
+        details.appendChild(detailChip);
 
+        card.appendChild(badge);
+        card.appendChild(title);
+        card.appendChild(year);
+        card.appendChild(college);
+        card.appendChild(cgpa);
+        card.appendChild(description);
+        card.appendChild(details);
+
+        educationContainer.appendChild(card);
     });
 }
- ExperienceView();
+
+renderEducation();

@@ -1,13 +1,6 @@
-document.addEventListener("DOMContentLoaded",function(){
-    //Render skills
+document.addEventListener("DOMContentLoaded", function() {
     renderSkills();
     initModal();
     initContactValidation();
     initThemeToggle();
-    ExperienceView();
-    initTypingAnimation();
-    initSearch();
-    initGeolocation();
-    initDynamicGreeting();
-    initRecentlyViewed();
 });

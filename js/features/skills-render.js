@@ -1,42 +1,40 @@
-function renderSkills(){
+function renderSkills() {
     const skillsContainer = document.getElementById("skills-container");
-    if(!skillsContainer){
+    if (!skillsContainer) {
         console.log("Skills container not found");
         return;
     }
+
     skillsContainer.innerHTML = "";
-    skillsData.forEach(function(skill){
-        //to create outer card
-        const card = document.createElement("div");
-        card.className = "p-8 text-center bg-white rounded-3xl shadow-lg";
+    skillsData.forEach(function(skill) {
+        const card = document.createElement("article");
+        card.className = "group p-8 bg-white rounded-3xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md";
 
-        //create icon
+        const cardHeader = document.createElement("div");
+        cardHeader.className = "flex items-center justify-between gap-4";
+
         const iconBox = document.createElement("div");
-        iconBox.className = "w-20 h-20 mx-auto mb-4 bg-green-900 rounded-2xl flex items-center justify-center";
-
-        //create icon text
+        iconBox.className = "flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-100 text-slate-900 shadow-sm";
         const iconText = document.createElement("span");
-        iconText.className = "text-2xl text-white font-bold";
+        iconText.className = "text-2xl font-bold";
         iconText.textContent = skill.shortLabel;
-        
-        //Put icon text inside icon box
         iconBox.appendChild(iconText);
 
-        //create skill name
+        cardHeader.appendChild(iconBox);
+
         const skillName = document.createElement("h3");
-        skillName.className ="text-xl font-bold mb-2";
+        skillName.className = "mt-8 text-2xl font-bold text-slate-950";
         skillName.textContent = skill.name;
 
-        //create skill desc
         const skillDescription = document.createElement("p");
-        skillDescription.className = "text-sm";
+        skillDescription.className = "mt-4 text-sm leading-7 text-slate-600";
         skillDescription.textContent = skill.description;
-        //Append all child elements to card
-        card.appendChild(iconBox);
+
+        card.appendChild(cardHeader);
         card.appendChild(skillName);
         card.appendChild(skillDescription);
-         //Append card to skills container
         skillsContainer.appendChild(card);
     });
+
     console.log("Skills rendered successfully");
 }
