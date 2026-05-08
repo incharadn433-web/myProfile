@@ -1,40 +1,63 @@
 function renderSkills() {
-    const skillsContainer = document.getElementById("skills-container");
-    if (!skillsContainer) {
-        console.log("Skills container not found");
-        return;
-    }
 
-    skillsContainer.innerHTML = "";
-    skillsData.forEach(function(skill) {
-        const card = document.createElement("article");
-        card.className = "group p-8 bg-white rounded-3xl border border-slate-200 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-md";
+  const skillsContainer =
+    document.getElementById("skills-container");
 
-        const cardHeader = document.createElement("div");
-        cardHeader.className = "flex items-center justify-between gap-4";
+  if (!skillsContainer) return;
 
-        const iconBox = document.createElement("div");
-        iconBox.className = "flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-100 text-slate-900 shadow-sm";
-        const iconText = document.createElement("span");
-        iconText.className = "text-2xl font-bold";
-        iconText.textContent = skill.shortLabel;
-        iconBox.appendChild(iconText);
+  skillsContainer.innerHTML = "";
 
-        cardHeader.appendChild(iconBox);
+  skillsData.forEach(skill => {
 
-        const skillName = document.createElement("h3");
-        skillName.className = "mt-8 text-2xl font-bold text-slate-950";
-        skillName.textContent = skill.name;
+    const card =
+      document.createElement("div");
 
-        const skillDescription = document.createElement("p");
-        skillDescription.className = "mt-4 text-sm leading-7 text-slate-600";
-        skillDescription.textContent = skill.description;
+    card.className = `
+      bg-white dark:bg-gray-800
+      p-6
+      rounded-2xl
+      shadow-lg
+      border
+      border-gray-200
+      dark:border-gray-700
+      transition-all
+      duration-300
+      hover:scale-105
+      w-full
+    `;
 
-        card.appendChild(cardHeader);
-        card.appendChild(skillName);
-        card.appendChild(skillDescription);
-        skillsContainer.appendChild(card);
-    });
+    const title =
+      document.createElement("h3");
 
-    console.log("Skills rendered successfully");
+    title.className = `
+      text-xl
+      font-bold
+      text-black
+      dark:text-white
+      mb-3
+    `;
+
+    title.textContent = skill.name;
+
+    const description =
+      document.createElement("p");
+
+    description.className = `
+      text-gray-600
+      dark:text-gray-300
+      text-sm
+      leading-7
+    `;
+
+    description.textContent =
+      skill.description;
+
+    card.appendChild(title);
+
+    card.appendChild(description);
+
+    skillsContainer.appendChild(card);
+  });
 }
+
+renderSkills();

@@ -3,4 +3,5 @@ document.addEventListener("DOMContentLoaded", function() {
     initModal();
     initContactValidation();
     initThemeToggle();
+    renderEducation();
 });

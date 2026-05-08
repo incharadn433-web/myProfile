@@ -15,6 +15,6 @@
         greeting = "Good Night"; 
     }
 
-     greetingEl.textContent = greeting + ", I am";
+     greetingEl.textContent = greeting + " , ";
 }
 initDynamicGreeting();
